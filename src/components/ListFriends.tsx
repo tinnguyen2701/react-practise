@@ -10,7 +10,15 @@ import ImageIconWrapper from './image/ImageIconWrapper';
 
 
 const ListFriendsStyled = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
 
+    button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
 `
 
 export interface ListFriendProps {
@@ -37,16 +45,16 @@ export const ListFriends = React.memo(() => {
                             <ImageIconWrapper 
                                 key={index}
                                 primarySrc={user.avatar}
-                                primaryWidth="50px"
+                                primaryWidth="60px"
                                 secondarySrc={secondarySrc}
-                                secondaryWidth="30px"
+                                secondaryWidth="20px"
                             />
                         )
                     })}
 
-                    <span>
-                        <ButtonWrapped onClick={() => {}}><PlusOutlined /></ButtonWrapped>
-                    </span>
+                    <ButtonWrapped onClick={() => {}}>
+                        <PlusOutlined />
+                    </ButtonWrapped>
                 </>)
         }
         </ListFriendsStyled>

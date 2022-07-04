@@ -9,15 +9,20 @@ import { TitleStyled } from "../components/TitleStyled";
 
 const CalendarStyled = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const CalendarScheduleStyled = styled.div`
-
+  flex: 1;
+  background-color: #5a4141;
+  padding: 0 20px;
 `;
 
 const PostScheduleStyled = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
 `;
 
 const CalendarPage = () => {
@@ -30,7 +35,7 @@ const CalendarPage = () => {
           <ListFriends />
 
           <PostScheduleStyled>
-            <TitleStyled>Post Schedule</TitleStyled>
+            <TitleStyled fontSize="20px">Post Schedule</TitleStyled>
             <ButtonWrapped onClick={() => {}}>Create a Post</ButtonWrapped>
           </PostScheduleStyled>
 

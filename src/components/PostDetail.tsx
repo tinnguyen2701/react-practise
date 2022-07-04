@@ -9,7 +9,8 @@ import ImageThumbnail from "./image/ImageThumbnail";
 
 const PostDetailStyled = styled.div`
     border: 1px solid tomato;
-    width: 500px;
+    max-width: 45px;
+    min-width: 450px;
 `;
 
 const SectionWrapperStyled = styled.div`

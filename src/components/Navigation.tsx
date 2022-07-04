@@ -1,5 +1,6 @@
 import { CalendarOutlined, DashboardOutlined, ExceptionOutlined, InfoCircleOutlined, MessageOutlined, SettingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import styled from "styled-components"
 
 interface Menu {
     name: string,
@@ -38,23 +39,58 @@ const menus: Menu[] = [
         icon: <SettingOutlined />,
         path: "/settings"
     }
-  ]
+]
+
+const NavigationStyled = styled.ul`
+    list-style: none;
+    width: 100%;
+    padding: 0 30px;
+`
+
+const MenuItemStyled = styled.li`
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    padding-left: 20%;
+
+    > a {
+        display: block;
+        color: #7d7c89;
+        font-size: 18px;
+
+        > span {
+            margin-right: 10%;
+        }
+    }
+
+    :hover {
+        background-color: #221f2a;
+
+        > a:hover {
+            color: white;
+    
+            > span {
+                color: #621ecf;
+            }
+        }
+    }
+
+`
 
 const Navigation = () => {
-  
-
   return (
     <>
-        <ul>
+        <NavigationStyled>
             { 
                 menus.map((menu, index) => 
-                    <li key={index}>
+                    <MenuItemStyled key={index}>
                         <Link to={menu.path}>
                             {menu.icon} {menu.name}
                         </Link>
-                    </li>
+                    </MenuItemStyled>
             )}
-        </ul> 
+        </NavigationStyled> 
     </>
   );
 };

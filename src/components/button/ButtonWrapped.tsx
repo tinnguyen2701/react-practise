@@ -5,12 +5,23 @@ import styled from "styled-components";
 
 
 const ButtonStyled = styled(Button)`
-    border: 1px solid pink;
-    background: pink;
+    background-color: #634BFF;
+    border: 0px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 
+    anticon {
+        margin-right: 5px;
+    }
     :hover {
-        background: pink;
-        border: 1px solid pink;
+        background-color: #634BFF;
+        color: white;
     }
 `
 

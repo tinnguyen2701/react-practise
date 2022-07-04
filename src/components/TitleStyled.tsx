@@ -1,6 +1,13 @@
 import styled from "styled-components"
 
-export const TitleStyled = styled.p`
-    font-size: 25px;
-    color: tomato;
+
+interface TitleProps {
+    fontSize?: string;
+    color?: string;
+}
+
+export const TitleStyled = styled.p<TitleProps>`
+    margin: 0;
+    font-size: ${props => props.fontSize || "15px"};
+    color: ${props => props.color || "white"};
 `;

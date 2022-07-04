@@ -5,15 +5,40 @@ import ListThumbnails from "./ListThumbnails";
 import { TitleStyled } from "./TitleStyled";
 
 const LastMonthHighLightStyled = styled.div`
-  border: 1px solid yellow;
+  width: 100%;
+  padding: 0 30px;
 `;
 
 const SummaryScheduleStyled = styled.div`
   display: flex;
+  height: 150px;
+`;
+
+const CheckoutContainerStyled = styled.div`
+  display: flex;
+  align-items: flex-end;
+
+  p {
+    flex: 1;
+    text-align: center;
+    line-height: 0px;
+  }
 `;
 
 const SummaryItemContainerStyled = styled.div`
-  border: 1px solid tomato;
+  flex: 1;
+  margin-left: 20px;
+  border-radius: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #221f2a;
+
+  :first-child {
+    flex: 2;
+    margin-left: 0;
+  }
 `;
 
 const SummarySchedule = () => {
@@ -23,16 +48,18 @@ const SummarySchedule = () => {
     <SummaryScheduleStyled>
       <SummaryItemContainerStyled>
         <LastMonthHighLightStyled>
-            <TitleStyled>Last Month HighLights</TitleStyled>
+            <TitleStyled style={{paddingBottom:"10px"}}>Last Month HighLights</TitleStyled>
 
-            {isLoading ?
-              <p>....loading...</p> :
-              isSuccess ? <ListThumbnails images={data.hightLightImages} /> : <></>
-            }
+            <CheckoutContainerStyled>
+              {isLoading ?
+                <p>....loading...</p> :
+                isSuccess ? <ListThumbnails images={data.hightLightImages} /> : <></>
+              }
 
-            <TitleStyled>
-              Checkout <RightSquareOutlined />
-            </TitleStyled>
+              <TitleStyled color="#7d7c89">
+                Checkout <RightSquareOutlined />
+              </TitleStyled>
+            </CheckoutContainerStyled>
         </LastMonthHighLightStyled>
       </SummaryItemContainerStyled>
 
@@ -42,10 +69,10 @@ const SummarySchedule = () => {
             <p>...loading..</p> :
             isSuccess ? 
               <>
-                <TitleStyled>
+                <TitleStyled fontSize="35px">
                   {data.numberScheduleForToday}
                 </TitleStyled>
-                <TitleStyled>
+                <TitleStyled color="#7d7c89">
                   Scheduled for today
                 </TitleStyled>
               </> : <></>
@@ -59,10 +86,10 @@ const SummarySchedule = () => {
             
             isSuccess ?
             <>
-              <TitleStyled>
+              <TitleStyled fontSize="35px">
                 {data.numberPostThisWeek}
               </TitleStyled>
-              <TitleStyled>
+              <TitleStyled color="#7d7c89">
                 Posted this week
               </TitleStyled>
             </>

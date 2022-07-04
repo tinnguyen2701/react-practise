@@ -1,7 +1,13 @@
 import { useCookies } from 'react-cookie';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import styled from "styled-components"
 import { userApi } from '../redux/apis';
 import SideBar from './SideBar';
+
+
+const ContentWrapperStyled = styled.div`
+    width: 83%;
+`;
 
 const RequireUser = () => {
   const [cookies] = useCookies(['logged_in']);
@@ -27,7 +33,10 @@ const RequireUser = () => {
     <>
       <div className='container'>
         <SideBar />
-        <Outlet />
+
+        <ContentWrapperStyled>
+          <Outlet />
+        </ContentWrapperStyled>
       </div>
     </> : 
     <Navigate to='/login' state={{ from: location }} replace />

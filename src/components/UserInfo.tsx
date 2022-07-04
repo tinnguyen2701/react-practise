@@ -5,9 +5,25 @@ import { useAppSelector } from "../hooks/appHook";
 import { useLogoutUserMutation } from "../redux/apis/authApi";
 import ButtonWrapped from "./button/ButtonWrapped";
 import ImageCircle from "./image/ImageCircle";
+import { TitleStyled } from "./TitleStyled";
 
 const UserInfoStyled = styled.div`
-    
+  width: 100%;
+`;
+
+const UserInfoFrameStyled = styled.div`
+  margin: 5px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #221f2a;
+  border-radius: 20px;
+  padding: 20px 0px 5px 0px;
+
+  button {
+    margin-top: 20px;
+  }
 `;
 
 const UserInfo = () => {
@@ -27,21 +43,25 @@ const UserInfo = () => {
 
   return (
     <UserInfoStyled>
-      <ImageCircle 
-        src={currentUser.avatar} 
-        width="50px" 
-        height="50px" />
+      <UserInfoFrameStyled>
+        <ImageCircle 
+          src={currentUser.avatar} 
+          width="90px" />
 
-      <div>
-        <p>{currentUser.name}</p>
-        <p>{currentUser.email}</p>
-      </div>
+        <TitleStyled fontSize="18px">
+          {currentUser.name}
+        </TitleStyled>
 
-      <ButtonWrapped 
-        onClick={() => onClickLogout()}>
-          <LogoutOutlined />
-          Sign out
-      </ButtonWrapped>
+        <TitleStyled fontSize="18px" color="#7d7c89">
+          {currentUser.email}
+        </TitleStyled>
+
+        <ButtonWrapped style={{width: "70%"}} 
+          onClick={() => onClickLogout()}>
+            <LogoutOutlined />
+            Sign out
+        </ButtonWrapped>
+      </UserInfoFrameStyled>
     </UserInfoStyled>
   );
 };
