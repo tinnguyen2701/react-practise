@@ -1,9 +1,14 @@
 import { TitleStyled } from "./TitleStyled";
-import type { BadgeProps } from 'antd';
+import { BadgeProps, ConfigProvider } from 'antd';
 import { Badge, Calendar } from 'antd';
-import type { Moment } from 'moment';
 import React from 'react';
-
+import en_GB from 'antd/lib/locale-provider/en_GB';
+import moment, { Moment } from 'moment';
+import 'moment/locale/en-gb';
+moment.locale('en-gb');
+moment.updateLocale('en-gb', {
+  weekdaysMin: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+});
 
 const getListData = (value: Moment) => {
   let listData;
@@ -36,24 +41,7 @@ const getListData = (value: Moment) => {
   return listData || [];
 };
 
-
-const getMonthData = (value: Moment) => {
-  if (value.month() === 8) {
-    return 1394;
-  }
-};
-
 const CalendarPosting = () => {
-  const monthCellRender = (value: Moment) => {
-    const num = getMonthData(value);
-    return num ? (
-      <div className="notes-month">
-        <section>{num}</section>
-        <span>Backlog number</span>
-      </div>
-    ) : null;
-  };
-
   const dateCellRender = (value: Moment) => {
     const listData = getListData(value);
     return (
@@ -73,7 +61,12 @@ const CalendarPosting = () => {
         September
       </TitleStyled>
 
-      <Calendar dateCellRender={dateCellRender} monthCellRender={monthCellRender} />;
+      <ConfigProvider locale={en_GB}>
+        <Calendar
+          className="hideHeader"
+          dateCellRender={dateCellRender}
+        />
+      </ConfigProvider>
     </>
   );
 };
