@@ -118,7 +118,7 @@ app.get('/api/users/me', async (req, res) => {
 });
 
 app.get('/api/users/getListFriends', async (req, res) => {
-  const {currentUserId} = req.body;
+  const {currentUserId} = req.query;
 
   var data = allUsers.filter(p => p.id !== currentUserId);
 
@@ -141,6 +141,37 @@ app.get('/api/posts/getSummaryPost', async (req, res) => {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   return res.json({ data: { hightLightImages, numberScheduleForToday, numberPostThisWeek }});
+});
+
+app.get('/api/posts/getPostScheduleByDatetime', async (req, res) => {
+  var {day, month, year} = req.query;
+
+  var images = [
+    "https://www.cnet.com/a/img/resize/f69c4042a8089d8433fdba45f1afe5935ce8d757/2020/09/22/8165dabd-9d02-4eee-af0f-064071c7c2ed/longcatsocial.jpg?auto=webp&fit=crop&height=630&width=1200",
+    "https://lh3.googleusercontent.com/R9skLkjIFFr2GyA8qu_FYqeq12tPoWcyR6woaxWyGCtVqDSMjBoX89sOENskTW4jFkTipyKW-481XxCHnqhlBqm-jnFDLPEp3ux2ceQ=w1400-k",
+  ]
+
+  // if(day === 5 || day === 10 || day === 15) {
+  //   console.log(day);
+  //   images = [
+  //     "https://www.cnet.com/a/img/resize/f69c4042a8089d8433fdba45f1afe5935ce8d757/2020/09/22/8165dabd-9d02-4eee-af0f-064071c7c2ed/longcatsocial.jpg?auto=webp&fit=crop&height=630&width=1200",
+  //     "https://lh3.googleusercontent.com/R9skLkjIFFr2GyA8qu_FYqeq12tPoWcyR6woaxWyGCtVqDSMjBoX89sOENskTW4jFkTipyKW-481XxCHnqhlBqm-jnFDLPEp3ux2ceQ=w1400-k",
+  //   ]
+  // }
+
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  return res.json(images);
+});
+
+app.get('/api/posts/getPostById', async (req, res) => {
+  const {postId} = req.query;
+
+  var post = allPosts.filter(p => p.id === postId)[0];
+
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  return res.json(post);
 });
 
 
@@ -205,8 +236,7 @@ const allPosts = [
 
     ],
     userId: "1",
-    desc: "description testing one",
-    datetimePosting: "2022/06/21 10:00:00",
+    description: "description testing one",
     tags: [
       {
         id: "1",
@@ -233,32 +263,34 @@ const allPosts = [
         name: "Thoughts",
       },
     ],
+    dateOfPostings: [
+      "2022/07/21 10:00:00",
+      "2022/07/21 13:30:00",
+    ]
   },
-  {
-    id: "2",
-    images: [
-      "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg",
-    ],
-    userId: "2",
-    desc: "description testing two",
-    datetimePosting: "2022/06/21 10:00:00",
-    tags: [
-      {
-        id: "1",
-        name: "Party",
-      },
-    ],
-  },
-  {
-    id: "3",
-    images: [
-      "https://img-04.stickers.cloud/packs/32268ce6-eca4-4a77-8935-1694f1520316/webp/5e5512c7-5fac-41d4-aacb-22ac5060d923.webp",
-    ],
-    userId: "3",
-    desc: "description testing three",
-    datetimePosting: "2022/06/21 10:00:00",
-    tags: [],
-  },
+  // {
+  //   id: "2",
+  //   images: [
+  //     "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg",
+  //   ],
+  //   userId: "2",
+  //   description: "description testing two",
+  //   tags: [
+  //     {
+  //       id: "1",
+  //       name: "Party",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: "3",
+  //   images: [
+  //     "https://img-04.stickers.cloud/packs/32268ce6-eca4-4a77-8935-1694f1520316/webp/5e5512c7-5fac-41d4-aacb-22ac5060d923.webp",
+  //   ],
+  //   userId: "3",
+  //   description: "description testing three",
+  //   tags: [],
+  // },
 ]
 
 

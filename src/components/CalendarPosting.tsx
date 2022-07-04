@@ -5,6 +5,10 @@ import React from 'react';
 import en_GB from 'antd/lib/locale-provider/en_GB';
 import moment, { Moment } from 'moment';
 import 'moment/locale/en-gb';
+import { userApi } from "../redux/apis";
+import { useGetPostScheduleByDatetimeQuery } from "../redux/apis/postApi";
+import ListThumbnails from "./ListThumbnails";
+
 moment.locale('en-gb');
 moment.updateLocale('en-gb', {
   weekdaysMin: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -43,15 +47,26 @@ const getListData = (value: Moment) => {
 
 const CalendarPosting = () => {
   const dateCellRender = (value: Moment) => {
-    const listData = getListData(value);
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    // const {data, isLoading, isSuccess} = useGetPostScheduleByDatetimeQuery(
+    //   {
+    //     day: value.date(),
+    //     month: value.month(),
+    //     year: value.year()
+    //   }, {
+    //   skip: false,
+    //   refetchOnMountOrArgChange: true
+    // });
+    var data = null;
+    var isLoading = true;
+    var isSuccess = true;
+
+    console.log("1");
+
     return (
-      <ul className="events">
-        {listData.map(item => (
-          <li key={item.content}>
-            <Badge status={item.type as BadgeProps['status']} text={item.content} />
-          </li>
-        ))}
-      </ul>
+      isLoading ? <p>..loading..</p> :
+        isSuccess && data ? <ListThumbnails images={data} /> : <></>
     );
   };
 

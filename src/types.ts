@@ -4,6 +4,14 @@ export interface IUser {
     email: string;
     avatar: string,
     typeIcon: TypeIcon 
+}
+
+export interface IPost {
+    id: string;
+    images: string[],
+    description: string,
+    tags: string[],
+    dateOfPostings: string[]
   }
   
   export interface IGenericResponse {

@@ -27,7 +27,7 @@ export const userApi = createApi({
     }
     ),
     getListFiends: builder.query({
-      query: (currentUserId) => `getListFriends?currentUserId=` + currentUserId,
+      query: (currentUserId: string) => `getListFriends?currentUserId=${currentUserId}`,
       transformResponse: (response: any) => response.data
     }),
   }),

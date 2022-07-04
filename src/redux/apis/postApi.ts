@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IPost } from '../../types';
 import { BasePathAPIUrl } from '../../utils/constants';
 
 export const postApi = createApi({
@@ -12,7 +13,19 @@ export const postApi = createApi({
       query: () => `getSummaryPost`,
       transformResponse: (response: any) => response.data
     }),
+    getPostScheduleByDatetime: builder.query({
+      query: (params: {day: number, month: number, year: number}) => 
+        `getPostScheduleByDatetime?day=${params.day}&month=${params.month}&year=${params.year}`,
+    }),
+    getPostById: builder.query<IPost | any, string>({
+      query: (postId: string) => 
+        `getPostById?postId=${postId}`,
+      transformResponse: (result: IPost ) => result,
+    }),
   }),
 });
 
-export const { useGetSummaryPostQuery } = postApi
+export const { 
+  useGetSummaryPostQuery, 
+  useGetPostScheduleByDatetimeQuery,
+  useGetPostByIdQuery } = postApi
