@@ -37,5 +37,5 @@ export const LoginPage = () => {
         </form>
         {isLoging && <p>loging....</p>}
     </div>
-  );
-};
+  )
+}

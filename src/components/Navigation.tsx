@@ -1,4 +1,4 @@
-import { DashboardOutlined } from "@ant-design/icons";
+import { CalendarOutlined, DashboardOutlined, ExceptionOutlined, InfoCircleOutlined, MessageOutlined, SettingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 interface Menu {
@@ -15,27 +15,27 @@ const menus: Menu[] = [
     },
     {
         name: "Calendar",
-        icon: <DashboardOutlined />,
+        icon: <CalendarOutlined />,
         path: "/calendar"
     },
     {
         name: "Analytics",
-        icon: <DashboardOutlined />,
+        icon: <MessageOutlined />,
         path: "/analytics"
     },
     {
         name: "Ads",
-        icon: <DashboardOutlined />,
+        icon: <InfoCircleOutlined />,
         path: "/ads"
     },
     {
         name: "Campaigns",
-        icon: <DashboardOutlined />,
+        icon: <ExceptionOutlined />,
         path: "/campaigns"
     },
     {
         name: "Settings",
-        icon: <DashboardOutlined />,
+        icon: <SettingOutlined />,
         path: "/settings"
     }
   ]

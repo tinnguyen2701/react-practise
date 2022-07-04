@@ -24,6 +24,13 @@ export const userApi = createApi({
           dispatch(setUser(data));
         } catch (error) {}
       },
+    }
+    ),
+    getListFiends: builder.query({
+      query: (currentUserId) => `getListFriends?currentUserId=` + currentUserId,
+      transformResponse: (response: any) => response.data
     }),
   }),
 });
+
+export const { useGetListFiendsQuery } = userApi

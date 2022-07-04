@@ -112,8 +112,77 @@ app.get('/api/auth/logout', async (req, res) => {
 });
 
 app.get('/api/users/me', async (req, res) => {
-  return res.json({id: 1, name: 'tin-nguyen', email: 'blah@gmail.com'});
+  var user = allUsers.filter(p => p.id == "1")[0];
+
+  return res.json(user);
 });
+
+app.get('/api/users/getListFriends', async (req, res) => {
+  const {currentUserId} = req.body;
+
+  var data = allUsers.filter(p => p.id !== currentUserId);
+
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  return res.json({ data });
+});
+
+
+const allUsers = [
+  {
+    id: "1",
+    name: "name-1",
+    email: "name1@gmail",
+    avatar: "https://cdn.longkhanhpets.com/2019/08/tam-ly-loai-meo-1.jpg",
+    typeIcon: "tiktok"
+  },
+  {
+    id: "2",
+    name: "name-2",
+    email: "name2@gmail",
+    avatar: "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/abd83394d7564cf2a6389f6fd7be9e7a~c5_720x720.jpeg?x-expires=1657015200&x-signature=z6WIwJhEQVuBZi%2FwsymuPT%2Bhl%2BE%3D",
+    typeIcon: "youtube"
+  },
+  {
+    id: "3",
+    name: "name-3",
+    email: "name3@gmail",
+    avatar: "https://pbs.twimg.com/media/FD-Y3soVEAE9Sjj?format=jpg&name=900x900",
+    typeIcon: "instagram"
+  },
+  {
+    id: "4",
+    name: "name-4",
+    email: "name4@gmail",
+    avatar: "https://i.kym-cdn.com/entries/icons/facebook/000/027/852/Screen_Shot_2018-12-12_at_1.02.39_PM.jpg",
+    typeIcon: "tiktok"
+  },
+  {
+    id: "5",
+    name: "name-5",
+    email: "name5@gmail",
+    avatar: "https://i.pinimg.com/736x/ab/9e/53/ab9e53b748f4a45b1aaad922d0788d54.jpg",
+    typeIcon: "youtube"
+  },
+  {
+    id: "6",
+    name: "name-6",
+    email: "name6@gmail",
+    avatar: "https://pic-bstarstatic.akamaized.net/ugc/685c0664215e5668cf3dcefcb7091df6dad9e8bf.jpg",
+    typeIcon: "tiktok"
+  },
+  {
+    id: "7",
+    name: "name-7",
+    email: "name7@gmail",
+    avatar: "https://tiermaker.com/images/templates/meme-cats-1022816/10228161621384562.jpg",
+    typeIcon: "tiktok"
+  }
+]
+
+
+
+
 
 
 

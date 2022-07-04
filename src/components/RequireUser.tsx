@@ -25,8 +25,10 @@ const RequireUser = () => {
   // TODO: cookies.logged_in || user 
   return (cookies.logged_in) ? 
     <>
-      <SideBar />
-      <Outlet />
+      <div className='container'>
+        <SideBar />
+        <Outlet />
+      </div>
     </> : 
     <Navigate to='/login' state={{ from: location }} replace />
 };
