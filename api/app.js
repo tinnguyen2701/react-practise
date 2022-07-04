@@ -127,6 +127,22 @@ app.get('/api/users/getListFriends', async (req, res) => {
   return res.json({ data });
 });
 
+app.get('/api/posts/getSummaryPost', async (req, res) => {
+  var hightLightImages = [
+    "https://www.cnet.com/a/img/resize/f69c4042a8089d8433fdba45f1afe5935ce8d757/2020/09/22/8165dabd-9d02-4eee-af0f-064071c7c2ed/longcatsocial.jpg?auto=webp&fit=crop&height=630&width=1200",
+    "https://lh3.googleusercontent.com/R9skLkjIFFr2GyA8qu_FYqeq12tPoWcyR6woaxWyGCtVqDSMjBoX89sOENskTW4jFkTipyKW-481XxCHnqhlBqm-jnFDLPEp3ux2ceQ=w1400-k",
+    "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg",
+    "https://img-04.stickers.cloud/packs/32268ce6-eca4-4a77-8935-1694f1520316/webp/5e5512c7-5fac-41d4-aacb-22ac5060d923.webp"
+  ]
+
+  var numberScheduleForToday = 2;
+  var numberPostThisWeek = 3;
+
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  return res.json({ data: { hightLightImages, numberScheduleForToday, numberPostThisWeek }});
+});
+
 
 const allUsers = [
   {
@@ -180,7 +196,70 @@ const allUsers = [
   }
 ]
 
+const allPosts = [
+  {
+    id: "1",
+    images: [
+      "https://www.cnet.com/a/img/resize/f69c4042a8089d8433fdba45f1afe5935ce8d757/2020/09/22/8165dabd-9d02-4eee-af0f-064071c7c2ed/longcatsocial.jpg?auto=webp&fit=crop&height=630&width=1200",
+      "https://lh3.googleusercontent.com/R9skLkjIFFr2GyA8qu_FYqeq12tPoWcyR6woaxWyGCtVqDSMjBoX89sOENskTW4jFkTipyKW-481XxCHnqhlBqm-jnFDLPEp3ux2ceQ=w1400-k",
 
+    ],
+    userId: "1",
+    desc: "description testing one",
+    datetimePosting: "2022/06/21 10:00:00",
+    tags: [
+      {
+        id: "1",
+        name: "Party",
+      },
+      {
+        id: "2",
+        name: "Dancing",
+      },
+      {
+        id: "3",
+        name: "Mood",
+      },
+      {
+        id: "4",
+        name: "Girl",
+      },
+      {
+        id: "5",
+        name: "Boy",
+      },
+      {
+        id: "6",
+        name: "Thoughts",
+      },
+    ],
+  },
+  {
+    id: "2",
+    images: [
+      "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg",
+    ],
+    userId: "2",
+    desc: "description testing two",
+    datetimePosting: "2022/06/21 10:00:00",
+    tags: [
+      {
+        id: "1",
+        name: "Party",
+      },
+    ],
+  },
+  {
+    id: "3",
+    images: [
+      "https://img-04.stickers.cloud/packs/32268ce6-eca4-4a77-8935-1694f1520316/webp/5e5512c7-5fac-41d4-aacb-22ac5060d923.webp",
+    ],
+    userId: "3",
+    desc: "description testing three",
+    datetimePosting: "2022/06/21 10:00:00",
+    tags: [],
+  },
+]
 
 
 

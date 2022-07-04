@@ -11,9 +11,9 @@ export interface ImageProps {
   height?: string,
 }
 
-const ImageThumbnail = ({src, alt = "image"}: ImageProps) => {
+const ImageThumbnail = ({src, width, alt = "image"}: ImageProps) => {
   return (
-    <ImageThumbnailStyled src={src} alt={alt} />
+    <ImageThumbnailStyled src={src} alt={alt} width={width} />
   );
 };
 

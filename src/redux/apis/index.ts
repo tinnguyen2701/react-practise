@@ -1,4 +1,5 @@
-import {authApi} from "./authApi";
-import {userApi} from "./userApi";
+import { authApi } from "./authApi";
+import { postApi } from "./postApi";
+import { userApi } from "./userApi";
 
-export {authApi, userApi}
+export {authApi, userApi, postApi}

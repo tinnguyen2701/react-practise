@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import ButtonWrapped from "../components/button/ButtonWrapped";
+import CalendarPosting from "../components/CalendarPosting";
 import ListFriends from "../components/ListFriends";
+import SummarySchedule from "../components/SummarySchedule";
 import { TitleStyled } from "../components/TitleStyled";
 
 const CalendarStyled = styled.div`
@@ -13,8 +15,6 @@ const PostScheduleStyled = styled.div`
 `;
 
 const CalendarPage = () => {
-    
-
     return (
       <CalendarStyled>
         <ListFriends />
@@ -24,6 +24,10 @@ const CalendarPage = () => {
           <ButtonWrapped onClick={() => {}}>Create a Post</ButtonWrapped>
         </PostScheduleStyled>
 
+        <SummarySchedule />
+
+        <CalendarPosting />
+        
       </CalendarStyled>
     );
   };
