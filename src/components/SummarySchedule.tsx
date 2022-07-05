@@ -53,7 +53,11 @@ const SummarySchedule = () => {
             <CheckoutContainerStyled>
               {isLoading ?
                 <p>....loading...</p> :
-                isSuccess ? <ListThumbnails images={data.hightLightImages} /> : <></>
+                isSuccess ? <ListThumbnails 
+                  images={data.hightLightImages}
+                  width="70px"
+                  height="70px"
+                  borderRadius="15px" /> : <></>
               }
 
               <TitleStyled color="#7d7c89">

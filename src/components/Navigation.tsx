@@ -1,5 +1,5 @@
 import { CalendarOutlined, DashboardOutlined, ExceptionOutlined, InfoCircleOutlined, MessageOutlined, SettingOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components"
 
 interface Menu {
@@ -45,37 +45,32 @@ const NavigationStyled = styled.ul`
     list-style: none;
     width: 100%;
     padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+
+    [aria-current="page"], a:hover {
+        background-color: #221f2a;
+        color: white;
+
+        > span {
+            color: #621ecf;
+        }
+    }
+
 `
 
-const MenuItemStyled = styled.li`
+const NavLinkStyled = styled(NavLink)`
     height: 50px;
     line-height: 50px;
     margin-bottom: 10px;
     border-radius: 25px;
     padding-left: 20%;
-
-    > a {
-        display: block;
-        color: #7d7c89;
-        font-size: 18px;
-
-        > span {
-            margin-right: 10%;
-        }
-    }
-
-    :hover {
-        background-color: #221f2a;
-
-        > a:hover {
-            color: white;
+    color: #7d7c89;
+    font-size: 18px;
     
-            > span {
-                color: #621ecf;
-            }
-        }
+    > span {
+        margin-right: 10%;
     }
-
 `
 
 const Navigation = () => {
@@ -84,11 +79,9 @@ const Navigation = () => {
         <NavigationStyled>
             { 
                 menus.map((menu, index) => 
-                    <MenuItemStyled key={index}>
-                        <Link to={menu.path}>
-                            {menu.icon} {menu.name}
-                        </Link>
-                    </MenuItemStyled>
+                    <NavLinkStyled key={index} to={menu.path}>
+                        {menu.icon} {menu.name}
+                    </NavLinkStyled>
             )}
         </NavigationStyled> 
     </>

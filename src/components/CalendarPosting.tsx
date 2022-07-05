@@ -5,6 +5,7 @@ import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
 import ImageThumbnail from "./image/ImageThumbnail";
+import ListThumbnails from "./ListThumbnails";
 
 const CalendarPostingStyled = styled.div`
   .fc-header-toolbar {
@@ -27,7 +28,14 @@ const FullCalendarWrapperStyled = styled.div`
     border-radius: 20px;
   }
 
-  table {
+  a.fc-daygrid-event.fc-daygrid-block-event.fc-h-event.fc-event.fc-event-start.fc-event-end {
+    background: transparent;
+    border: none;
+  }
+
+  .fc .fc-scrollgrid-liquid {
+    border: none;
+
     a {
       color: #848492;
     }
@@ -37,11 +45,6 @@ const FullCalendarWrapperStyled = styled.div`
     }
   }
 `
-
-const CalendarCellWrapper = styled.div`
-  border: 1px solid tomato;
-`
-
 
 const CalendarPosting = () => {
   const handleDateClick = (arg: any) => { // bind with an arrow function
@@ -82,13 +85,17 @@ export default CalendarPosting;
 
 function renderEventContent(eventInfo: any) {
   return (
-    <CalendarCellWrapper>
-      <div style={{display: "flex"}}>
-        <b>{eventInfo.timeText}</b>
-        <i>{eventInfo.event.title}</i>
-        <ImageThumbnail src="https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg" width="60px" height="50px" borderRadius="10px" />
+    <>
+      <div>
+        {/* <b>{eventInfo.timeText}</b> */}
+        {/* <i>{eventInfo.event.title}</i> */}
 
+        <ListThumbnails 
+          images={["https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg", "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg"]}
+          width="50px"
+          height="30px"
+          borderRadius="5px" />
       </div>
-    </CalendarCellWrapper>
+    </>
   )
 }

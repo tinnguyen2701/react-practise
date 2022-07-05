@@ -4,14 +4,12 @@ import styled from "styled-components"
 
 const SideBarStyled = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   flex-direction: column;  
   background: #151419;
   width: 17%;
     
   > img {
-    width: 100%;
+    height: 300px;
   }
 `;
 
@@ -19,7 +17,11 @@ const SideBarStyled = styled.div`
 const SideBar = () => {
   return (
     <SideBarStyled>
-        <img src={process.env.PUBLIC_URL + "/assets/images/brand.png"} className="App-logo" alt="logo" />
+        <img 
+          src={process.env.PUBLIC_URL + "/assets/images/brand.png"} 
+          className="App-logo" 
+          alt="logo"
+           />
 
         <Navigation />
 

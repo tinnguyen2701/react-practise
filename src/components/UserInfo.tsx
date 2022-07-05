@@ -31,13 +31,11 @@ const UserInfo = () => {
 
   const currentUser = useAppSelector(state => state.userState.user)
 
-  const [triggerLogout, {isSuccess: isLogoutSuccess}] = useLogoutUserMutation();
+  const [triggerLogout] = useLogoutUserMutation();
 
   const onClickLogout = () => {
     triggerLogout().unwrap().then(() => {
-      if(isLogoutSuccess) {
-        navigate("/", { replace: true })
-      }
+      navigate("/", { replace: true })
     });
   }
 

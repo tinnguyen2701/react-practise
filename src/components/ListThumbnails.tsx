@@ -5,7 +5,8 @@ import ImageThumbnail from './image/ImageThumbnail';
 
 const ListThumbnailsStyled = styled.div`
     display: flex;
-
+    overflow: hidden;
+    
     > img {
         margin-right: -10px;
     }
@@ -13,20 +14,21 @@ const ListThumbnailsStyled = styled.div`
 
 export interface ListThumbnailsProps {
     images: string[],
+    width: string,
+    height: string,
+    borderRadius?: string
 }
 
-
-
-const ListThumbnails = React.memo(({images}: ListThumbnailsProps) => {
+const ListThumbnails = React.memo(({images, width, height, borderRadius}: ListThumbnailsProps) => {
     return (
        <ListThumbnailsStyled>
         {images.map((imageSrc, index) => 
             <ImageThumbnail 
                 key={index} 
                 src={imageSrc} 
-                width="70px"
-                height="70px"
-                borderRadius="15px" /> 
+                width={width}
+                height={height}
+                borderRadius={borderRadius} /> 
         )}
        </ListThumbnailsStyled> 
     )})
