@@ -14,7 +14,7 @@ const CalendarStyled = styled.div`
 
 const CalendarScheduleStyled = styled.div`
   flex: 1;
-  background-color: #5a4141;
+  background-color: #1a1c20;
   padding: 0 20px;
 `;
 

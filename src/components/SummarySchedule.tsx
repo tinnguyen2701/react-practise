@@ -33,7 +33,7 @@ const SummaryItemContainerStyled = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #221f2a;
+  background-color: #232631;
 
   :first-child {
     flex: 2;

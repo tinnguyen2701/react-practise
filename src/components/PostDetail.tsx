@@ -4,21 +4,80 @@ import React from "react";
 import { TitleStyled } from "./TitleStyled";
 import { postApi } from "../redux/apis";
 import { CalendarOutlined, EditFilled, FileImageOutlined } from "@ant-design/icons";
-import { Carousel, Tag } from "antd";
+import { Carousel, DatePicker, Tag, TimePicker } from "antd";
 import ImageThumbnail from "./image/ImageThumbnail";
 
 const PostDetailStyled = styled.div`
-    border: 1px solid tomato;
     max-width: 45px;
     min-width: 450px;
+    background-color: #221f2a;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `;
 
 const SectionWrapperStyled = styled.div`
-    border: 1px solid tomato;    
+    width: 100%;
+    margin-top: 20px;
+
+    .date-time-picker-wrapper {
+        display: flex;
+        margin-bottom: 10px;
+        align-items: center;
+        color: white;
+
+        .dot {
+            font-size: 25px;
+            padding: 0 10px;
+        }
+    }
+`
+
+const TagStyled = styled(Tag)`
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg,#4158D0 0%,#C850C0 46% 100%);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    color: #fffafa;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+
+    > span {
+        border: 1px solid white;
+        padding: 3px;
+        border-radius: 50%;
+        
+        svg {
+            color: #fffafa;
+        }
+    }
 `
 
 const DescriptionStyled = styled.div`
-    border: 1px solid tomato;    
+    color: #7d7c89;
+    background-color: #191c24;
+    padding: 10px;
+    border-radius: 10px;
+
+    .ant-picker-input {
+        flex-direction: row-reverse;
+        
+        input {
+            color: white;
+        } 
+        
+        .ant-picker-suffix {
+            color: white;
+            margin-right: 10px;
+        }
+    }
+
+    .date-picker, .time-picker {
+        border: none;
+        background-color: inherit;
+    }
 `
 
 export interface PostDetailProps {
@@ -30,7 +89,7 @@ const contentStyle: React.CSSProperties = {
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
-    background: '#364d79',
+    background: '#232631',
   };
 
   export const PostDetail = React.memo(({postId, ...props}: PostDetailProps) => {
@@ -52,12 +111,17 @@ const contentStyle: React.CSSProperties = {
 
     return (
         <PostDetailStyled>
-            <TitleStyled>
+            <TitleStyled fontSize="20px">
                 Post Settings
             </TitleStyled>
             
             <SectionWrapperStyled>
-                <TitleStyled>Image <FileImageOutlined /></TitleStyled>
+                <TitleStyled 
+                    color="#7d7c89"
+                    padding="10px 0"
+                    fontSize="18px"
+                    >Image <FileImageOutlined />
+                </TitleStyled>
                 {loading ? 
                     <p>...Loading..</p> : 
                     isSuccess && post ?
@@ -65,7 +129,12 @@ const contentStyle: React.CSSProperties = {
                         {
                             post.images.map((imgSrc: string, index: number) => (
                                 <div key={index} style={contentStyle}>
-                                    <ImageThumbnail src={imgSrc} width="100px" height="70"/>
+                                    <ImageThumbnail 
+                                        src={imgSrc} 
+                                        width="100%" 
+                                        height="200px"
+                                        borderRadius="10px"
+                                        />
                                 </div>
                             ))
                         }
@@ -76,7 +145,12 @@ const contentStyle: React.CSSProperties = {
             </SectionWrapperStyled>
             
             <SectionWrapperStyled>
-                <TitleStyled>Description <EditFilled /></TitleStyled>
+                <TitleStyled 
+                    color="#7d7c89"
+                    padding="10px 0"
+                    fontSize="18px">
+                        Description <EditFilled />
+                </TitleStyled>
                 {loading ? 
                     <p>...Loading..</p> : 
                     isSuccess && post ?
@@ -87,17 +161,25 @@ const contentStyle: React.CSSProperties = {
                 }
             </SectionWrapperStyled>
 
-            
             <SectionWrapperStyled>
-                <TitleStyled>Date of Posting <CalendarOutlined /></TitleStyled>
+                <TitleStyled 
+                    color="#7d7c89"
+                    padding="10px 0"
+                    fontSize="18px">
+                        Date of Posting <CalendarOutlined />
+                </TitleStyled>
                 {loading ? 
                     <p>...Loading..</p> : 
                     isSuccess && post ?
                     (
                         post.dateOfPostings.map((date: any, index: number) => (
-                            <div key={index}>
-                                <DescriptionStyled>
-                                    {date}
+                            <div className="date-time-picker-wrapper" key={index}>
+                                 <DescriptionStyled style={{borderRadius: "25px"}}>
+                                     <DatePicker className="date-picker" size="middle" />
+                                 </DescriptionStyled>
+                                 <span className="dot">&bull;</span>
+                                <DescriptionStyled style={{borderRadius: "25px"}}>
+                                    <TimePicker className="time-picker"  />
                                 </DescriptionStyled>
                             </div>
                         ))) :
@@ -105,18 +187,20 @@ const contentStyle: React.CSSProperties = {
                 }
             </SectionWrapperStyled>
 
-
             <SectionWrapperStyled>
-                <TitleStyled>Tags</TitleStyled>
+                <TitleStyled 
+                    color="#7d7c89"
+                    padding="10px 0"
+                    fontSize="18px">Tags</TitleStyled>
 
                 {loading ? 
                     <p>...Loading..</p> : 
                     isSuccess && post ?
                     (
                         post.tags.map((tag: any, index: number) => (
-                            <Tag key={index} closable onClose={log}>
+                            <TagStyled key={index} closable onClose={log}>
                                 {tag.name}
-                            </Tag>
+                            </TagStyled>
                         ))) :
                     <></>
                 }
