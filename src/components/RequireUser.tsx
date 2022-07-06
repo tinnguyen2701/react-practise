@@ -6,7 +6,7 @@ import SideBar from './SideBar';
 
 
 const ContentWrapperStyled = styled.div`
-    width: 83%;
+    width: 85%;
 `;
 
 const RequireUser = () => {

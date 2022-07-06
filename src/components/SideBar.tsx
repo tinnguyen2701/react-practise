@@ -6,10 +6,10 @@ const SideBarStyled = styled.div`
   display: flex;
   flex-direction: column;  
   background: #151419;
-  width: 17%;
+  width: 15%;
     
   > img {
-    height: 300px;
+    height: 250px;
   }
 `;
 

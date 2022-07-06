@@ -48,7 +48,7 @@ const SummarySchedule = () => {
     <SummaryScheduleStyled>
       <SummaryItemContainerStyled>
         <LastMonthHighLightStyled>
-            <TitleStyled style={{paddingBottom:"10px"}}>Last Month HighLights</TitleStyled>
+            <TitleStyled color="#d0d1e3" padding="0 0 10px 0">Last Month HighLights</TitleStyled>
 
             <CheckoutContainerStyled>
               {isLoading ?

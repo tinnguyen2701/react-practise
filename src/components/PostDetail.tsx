@@ -10,7 +10,7 @@ import ImageThumbnail from "./image/ImageThumbnail";
 const PostDetailStyled = styled.div`
     max-width: 45px;
     min-width: 450px;
-    background-color: #221f2a;
+    background-color: #232631;
     padding: 20px;
     display: flex;
     align-items: center;

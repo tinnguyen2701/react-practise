@@ -19,7 +19,7 @@ const FullCalendarStyled = styled(FullCalendar)`
 const FullCalendarWrapperStyled = styled.div`
   min-height: 600px;
   background: #23242a;
-  border-radius: 20px;
+  // border-radius: 20px;
 
   .fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
     overflow: hidden;
@@ -31,7 +31,7 @@ const FullCalendarWrapperStyled = styled.div`
   }
   
   .fc thead th:first-child {
-    border-radius: 20px;
+    // border-radius: 20px;
   }
 
   a.fc-daygrid-event.fc-daygrid-block-event.fc-h-event.fc-event.fc-event-start.fc-event-end {
@@ -41,6 +41,10 @@ const FullCalendarWrapperStyled = styled.div`
 
   .fc .fc-scrollgrid-liquid {
     border: none;
+    
+    tbody .fc-day-sat, tbody .fc-day-sun {
+      background-color: #1e1f25;
+    }
 
     a {
       color: #848492;
@@ -53,6 +57,11 @@ const FullCalendarWrapperStyled = styled.div`
     .fc-daygrid-day-events {
       position: absolute;
       bottom: 5px;
+    }
+
+    th {
+      background-color: #1a1c20;
+      border: none;
     }
   }
 `

@@ -19,7 +19,7 @@ const UserInfoFrameStyled = styled.div`
   flex-direction: column;
   background-color: #221f2a;
   border-radius: 20px;
-  padding: 20px 0px 5px 0px;
+  padding: 20px 0px 10px 0px;
 
   button {
     margin-top: 20px;
@@ -46,11 +46,11 @@ const UserInfo = () => {
           src={currentUser.avatar} 
           width="90px" />
 
-        <TitleStyled fontSize="18px">
+        <TitleStyled fontSize="18px" padding="15px 0 0 0">
           {currentUser.name}
         </TitleStyled>
 
-        <TitleStyled fontSize="18px" color="#7d7c89">
+        <TitleStyled fontSize="18px" color="#7d7c89" padding="0 0 10px 0">
           {currentUser.email}
         </TitleStyled>
 

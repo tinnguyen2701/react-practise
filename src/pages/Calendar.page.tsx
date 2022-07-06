@@ -30,10 +30,8 @@ const CalendarPage = () => {
     const [visiblePostDetail, setVisiblePostDetail] = useState<boolean>(false);
 
     const handleDateClick = (postId: string) => {
-      // if (postId) {
-        setPostIdSelected(postId);
-        setVisiblePostDetail(true);
-      // }
+      setPostIdSelected(postId);
+      setVisiblePostDetail(true);
     }
 
     return (
@@ -43,7 +41,7 @@ const CalendarPage = () => {
 
           <PostScheduleStyled>
             <TitleStyled fontSize="20px">Post Schedule</TitleStyled>
-            <ButtonWrapped onClick={() => {}}>Create a Post</ButtonWrapped>
+            <ButtonWrapped style={{color: "#ccc0f5"}} onClick={() => {}}>Create a Post</ButtonWrapped>
           </PostScheduleStyled>
 
           <SummarySchedule />
