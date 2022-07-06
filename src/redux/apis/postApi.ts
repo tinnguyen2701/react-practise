@@ -22,10 +22,16 @@ export const postApi = createApi({
         `getPostById?postId=${postId}`,
       transformResponse: (result: IPost ) => result,
     }),
+    getAllPostSchedule: builder.query<IPost[] | any, null>({
+      query: () => 
+        `getAllPostSchedule`,
+      transformResponse: (result: IPost[] ) => result,
+    })
   }),
 });
 
 export const { 
   useGetSummaryPostQuery, 
   useGetPostScheduleByDatetimeQuery,
-  useGetPostByIdQuery } = postApi
+  useGetPostByIdQuery,
+  useGetAllPostScheduleQuery } = postApi

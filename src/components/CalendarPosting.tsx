@@ -4,8 +4,8 @@ import styled from "styled-components"
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
-import ImageThumbnail from "./image/ImageThumbnail";
 import ListThumbnails from "./ListThumbnails";
+import { postApi } from "../redux/apis";
 
 const CalendarPostingStyled = styled.div`
   .fc-header-toolbar {
@@ -17,8 +17,14 @@ const FullCalendarStyled = styled(FullCalendar)`
 `
 
 const FullCalendarWrapperStyled = styled.div`
+  min-height: 600px;
   background: #23242a;
   border-radius: 20px;
+
+  .fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
+    overflow: hidden;
+  }
+
   .fc td, .fc th {
     border: 1px solid #26282e;
     color: white;
@@ -43,13 +49,40 @@ const FullCalendarWrapperStyled = styled.div`
     .fc-highlight {
       background-image: linear-gradient(43deg,#4158D0 0%,#C850C0 46% 100%);
     }
+
+    .fc-daygrid-day-events {
+      position: absolute;
+      bottom: 5px;
+    }
   }
 `
 
-const CalendarPosting = () => {
-  const handleDateClick = (arg: any) => { // bind with an arrow function
-    // alert(arg.dateStr)
+interface CalendarPostingProp {
+  onDateClick: (postId: string) => void
+}
+
+const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
+  const { isLoading, isFetching } = postApi.endpoints.getAllPostSchedule.useQuery(null, {
+    skip: false,
+    refetchOnMountOrArgChange: true,
+  });
+
+  const loading = isLoading || isFetching;
+
+  const events = postApi.endpoints.getAllPostSchedule.useQueryState(null, {
+    selectFromResult: ({ data }) => {
+      return data;
+    }
+  });
+
+  const onDateClicked = (e: any) => {
+    if(events) {
+      var postIdSelected = events.filter((_: any) => _.date === e.dateStr)[0]?.id || null;
+
+      onDateClick(postIdSelected);
+    }
   }
+
 
   return (
     <CalendarPostingStyled>
@@ -58,22 +91,19 @@ const CalendarPosting = () => {
       </TitleStyled>
 
       <FullCalendarWrapperStyled>
+      {
+        isLoading ?
+        <p>..Loading..</p> :
         <FullCalendarStyled
           plugins={[interactionPlugin, dayGridPlugin]}
           selectable={true}
           firstDay={1}
           initialView="dayGridMonth"
           aspectRatio={1.6}
-          dateClick={(a) => handleDateClick(a)}
-          events={[
-            {
-              title: "Early ",
-              description: "asdasd",
-              date: "2022-07-04"
-            },
-            { title: "event 2", description: "asdasdasd", date: "2022-07-05" }
-          ]}
+          dateClick={(e) => onDateClicked(e)}
+          events={events}
           eventContent={renderEventContent} />
+      }
       </FullCalendarWrapperStyled>
       
     </CalendarPostingStyled>
@@ -87,14 +117,11 @@ function renderEventContent(eventInfo: any) {
   return (
     <>
       <div>
-        {/* <b>{eventInfo.timeText}</b> */}
-        {/* <i>{eventInfo.event.title}</i> */}
-
         <ListThumbnails 
-          images={["https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg", "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg"]}
-          width="50px"
-          height="30px"
-          borderRadius="5px" />
+          images={eventInfo.event.extendedProps.images}
+          width="60px"
+          height="40px"
+          borderRadius="15px" />
       </div>
     </>
   )

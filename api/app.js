@@ -174,6 +174,25 @@ app.get('/api/posts/getPostById', async (req, res) => {
   return res.json(post);
 });
 
+app.get('/api/posts/getAllPostSchedule', async (req, res) => {
+  var data = [
+    {
+      id: "1",
+      images: ["https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg", "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg", "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg","https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg"],
+      date: "2022-07-04"
+    },
+    {
+      id: "2",
+      images: ["https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg"],
+      date: "2022-07-05"
+    },
+  ]
+
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
+  return res.json(data);
+});
+
 
 const allUsers = [
   {

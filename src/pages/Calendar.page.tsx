@@ -27,7 +27,14 @@ const PostScheduleStyled = styled.div`
 
 const CalendarPage = () => {
     const [postIdSelected, setPostIdSelected] = useState<string>("1");
-    const [visiblePostDetail, setVisiblePostDetail] = useState<boolean>(true);
+    const [visiblePostDetail, setVisiblePostDetail] = useState<boolean>(false);
+
+    const handleDateClick = (postId: string) => {
+      // if (postId) {
+        setPostIdSelected(postId);
+        setVisiblePostDetail(true);
+      // }
+    }
 
     return (
       <CalendarStyled>
@@ -41,7 +48,7 @@ const CalendarPage = () => {
 
           <SummarySchedule />
 
-          <CalendarPosting />
+          <CalendarPosting onDateClick={(postId) => handleDateClick(postId)} />
           
         </CalendarScheduleStyled>
 

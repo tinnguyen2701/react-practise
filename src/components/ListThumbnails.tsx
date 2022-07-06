@@ -22,7 +22,7 @@ export interface ListThumbnailsProps {
 const ListThumbnails = React.memo(({images, width, height, borderRadius}: ListThumbnailsProps) => {
     return (
        <ListThumbnailsStyled>
-        {images.map((imageSrc, index) => 
+        {images && images.map((imageSrc, index) => 
             <ImageThumbnail 
                 key={index} 
                 src={imageSrc} 
