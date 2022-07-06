@@ -108,7 +108,7 @@ const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
           selectable={true}
           firstDay={1}
           initialView="dayGridMonth"
-          aspectRatio={1.6}
+          aspectRatio={2}
           dateClick={(e) => onDateClicked(e)}
           events={events}
           eventContent={renderEventContent} />

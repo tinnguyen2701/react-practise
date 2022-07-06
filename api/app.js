@@ -287,29 +287,24 @@ const allPosts = [
       "2022/07/21 13:30:00",
     ]
   },
-  // {
-  //   id: "2",
-  //   images: [
-  //     "https://lucloi.vn/wp-content/uploads/2021/03/Untitled-1.jpg",
-  //   ],
-  //   userId: "2",
-  //   description: "description testing two",
-  //   tags: [
-  //     {
-  //       id: "1",
-  //       name: "Party",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: "3",
-  //   images: [
-  //     "https://img-04.stickers.cloud/packs/32268ce6-eca4-4a77-8935-1694f1520316/webp/5e5512c7-5fac-41d4-aacb-22ac5060d923.webp",
-  //   ],
-  //   userId: "3",
-  //   description: "description testing three",
-  //   tags: [],
-  // },
+  {
+    id: "2",
+    images: [
+      "https://lh3.googleusercontent.com/R9skLkjIFFr2GyA8qu_FYqeq12tPoWcyR6woaxWyGCtVqDSMjBoX89sOENskTW4jFkTipyKW-481XxCHnqhlBqm-jnFDLPEp3ux2ceQ=w1400-k",
+    ],
+    userId: "1",
+    description: "one of the parts that a piece of writing is divided into, consisting of one or more sentences and beginning on a new line, one of the parts that a piece of writing is divided into ",
+    tags: [
+      {
+        id: "6",
+        name: "Thoughts",
+      },
+    ],
+    dateOfPostings: [
+      "2022/07/21 10:00:00",
+      "2022/07/21 13:30:00",
+    ]
+  },
 ]
 
 
