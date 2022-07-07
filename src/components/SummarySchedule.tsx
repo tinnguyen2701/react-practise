@@ -50,7 +50,7 @@ const SummarySchedule = () => {
         <TotalPostThisWeek 
           isLoading={isLoading}
           isSuccess={isSuccess}
-          numberPostThisWeek={data?.numberScheduleForToday || 0} />
+          numberPostThisWeek={data?.numberPostThisWeek || 0} />
         
       </SummaryItemContainerStyled>
     </SummaryScheduleStyled>
