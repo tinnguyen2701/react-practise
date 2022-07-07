@@ -5,8 +5,8 @@ import { TitleStyled } from "./TitleStyled";
 import { postApi } from "../redux/apis";
 import { CalendarOutlined, EditFilled, FileImageOutlined } from "@ant-design/icons";
 import ListTags from "./ListTags";
-import Carousel from "./carousel";
 import DateTimePicker from "./DateTimePicker";
+import Carousel from "./Carousel";
 
 const PostDetailStyled = styled.div`
     max-width: 45px;
