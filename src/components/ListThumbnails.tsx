@@ -7,8 +7,8 @@ const ListThumbnailsStyled = styled.div`
     display: flex;
     overflow: hidden;
     
-    > img {
-        margin-right: -10px;
+    > img:not(first-child) {
+        margin-left: -10px;
     }
 `
 

@@ -1,10 +1,8 @@
-import { LogoutOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components"
 import { useAppSelector } from "../hooks/appHook";
-import { useLogoutUserMutation } from "../redux/apis/authApi";
-import ButtonWrapped from "./button/ButtonWrapped";
 import ImageCircle from "./image/ImageCircle";
+import Signout from "./Signout";
 import { TitleStyled } from "./TitleStyled";
 
 const UserInfoStyled = styled.div`
@@ -24,20 +22,10 @@ const UserInfoFrameStyled = styled.div`
   button {
     margin-top: 20px;
   }
-`;
+`;  
 
 const UserInfo = () => {
-  const navigate = useNavigate();
-
   const currentUser = useAppSelector(state => state.userState.user)
-
-  const [triggerLogout] = useLogoutUserMutation();
-
-  const onClickLogout = () => {
-    triggerLogout().unwrap().then(() => {
-      navigate("/", { replace: true })
-    });
-  }
 
   return (
     <UserInfoStyled>
@@ -54,11 +42,7 @@ const UserInfo = () => {
           {currentUser.email}
         </TitleStyled>
 
-        <ButtonWrapped style={{width: "70%"}} 
-          onClick={() => onClickLogout()}>
-            <LogoutOutlined />
-            Sign out
-        </ButtonWrapped>
+        <Signout />
       </UserInfoFrameStyled>
     </UserInfoStyled>
   );

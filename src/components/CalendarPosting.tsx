@@ -18,8 +18,6 @@ const FullCalendarStyled = styled(FullCalendar)`
 
 const FullCalendarWrapperStyled = styled.div`
   min-height: 600px;
-  background: #23242a;
-  // border-radius: 20px;
 
   .fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
     overflow: hidden;
@@ -30,13 +28,19 @@ const FullCalendarWrapperStyled = styled.div`
     color: white;
   }
   
-  .fc thead th:first-child {
-    // border-radius: 20px;
-  }
-
   a.fc-daygrid-event.fc-daygrid-block-event.fc-h-event.fc-event.fc-event-start.fc-event-end {
     background: transparent;
     border: none;
+  }
+
+  .fc-scrollgrid-section {
+    > td, .fc-scroller-harness-liquid {
+        border-radius: 30px;
+    }
+
+    .fc-daygrid-body {
+      background: #23242a;
+    }
   }
 
   .fc .fc-scrollgrid-liquid {
@@ -60,7 +64,7 @@ const FullCalendarWrapperStyled = styled.div`
     }
 
     th {
-      background-color: #1a1c20;
+      // background-color: #1a1c20;
       border: none;
     }
   }
@@ -99,7 +103,7 @@ const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
         September
       </TitleStyled>
 
-      <FullCalendarWrapperStyled>
+      <FullCalendarWrapperStyled className="calendar">
       {
         isLoading ?
         <p>..Loading..</p> :
