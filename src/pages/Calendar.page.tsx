@@ -10,12 +10,15 @@ import { TitleStyled } from "../components/TitleStyled";
 const CalendarStyled = styled.div`
   display: flex;
   width: 100%;
+  background-color: #151419;
 `;
 
 const CalendarScheduleStyled = styled.div`
   flex: 1;
   background-color: #1a1c20;
   padding: 0 20px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
 `;
 
 const PostScheduleStyled = styled.div`

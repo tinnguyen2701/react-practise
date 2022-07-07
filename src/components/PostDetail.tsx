@@ -8,6 +8,11 @@ import ListTags from "./ListTags";
 import DateTimePicker from "./DateTimePicker";
 import Carousel from "./Carousel";
 
+
+const PostDetailWrapperStyled = styled.div`
+    background-color: #1a1c20;
+`
+
 const PostDetailStyled = styled.div`
     max-width: 45px;
     min-width: 450px;
@@ -16,6 +21,9 @@ const PostDetailStyled = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
+    height: 100%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
 `;
 
 const SectionWrapperStyled = styled.div`
@@ -66,78 +74,80 @@ export interface PostDetailProps {
     });
 
     return (
-        <PostDetailStyled>
-            <TitleStyled fontSize="20px">
-                Post Settings
-            </TitleStyled>
-            
-            <SectionWrapperStyled>
-                <TitleStyled 
-                    color="#7d7c89"
-                    padding="10px 0"
-                    fontSize="18px"
-                    >Image <FileImageOutlined />
+        <PostDetailWrapperStyled>
+            <PostDetailStyled>
+                <TitleStyled fontSize="20px">
+                    Post Settings
                 </TitleStyled>
-                {loading ? 
-                    <p>...Loading..</p> : 
-                    isSuccess && post ?
-                    <Carousel images={post.images} />
-                    :
-                    <></> 
-                }
-            </SectionWrapperStyled>
-            
-            <SectionWrapperStyled>
-                <TitleStyled 
-                    color="#7d7c89"
-                    padding="10px 0"
-                    fontSize="18px">
-                        Description <EditFilled />
-                </TitleStyled>
-                {loading ? 
-                    <p>...Loading..</p> : 
-                    isSuccess && post ?
-                    <DescriptionStyled>
-                        {post.description}
-                    </DescriptionStyled> :
-                    <></> 
-                }
-            </SectionWrapperStyled>
-
-            <SectionWrapperStyled>
-                <TitleStyled 
-                    color="#7d7c89"
-                    padding="10px 0"
-                    fontSize="18px">
-                        Date of Posting <CalendarOutlined />
-                </TitleStyled>
-                {loading ? 
-                    <p>...Loading..</p> : 
-                    isSuccess && post ?
-                    (
-                        post.dateOfPostings.map((date: any, index: number) => (
-                            <DateTimePicker day={date.day} time={date.time} key={index} />
-                        ))) :
-                        <></>
-                }
-            </SectionWrapperStyled>
-
-            <SectionWrapperStyled>
-                <TitleStyled 
-                    color="#7d7c89"
-                    padding="10px 0"
-                    fontSize="18px">Tags</TitleStyled>
-
-                {loading ? 
-                    <p>...Loading..</p> : 
-                    isSuccess && post ?
-                        <ListTags tags={post.tags} /> :
-                        <></>
-                }
                 
-            </SectionWrapperStyled>
+                <SectionWrapperStyled>
+                    <TitleStyled 
+                        color="#7d7c89"
+                        padding="10px 0"
+                        fontSize="18px"
+                        >Image <FileImageOutlined />
+                    </TitleStyled>
+                    {loading ? 
+                        <p>...Loading..</p> : 
+                        isSuccess && post ?
+                        <Carousel images={post.images} />
+                        :
+                        <></> 
+                    }
+                </SectionWrapperStyled>
+                
+                <SectionWrapperStyled>
+                    <TitleStyled 
+                        color="#7d7c89"
+                        padding="10px 0"
+                        fontSize="18px">
+                            Description <EditFilled />
+                    </TitleStyled>
+                    {loading ? 
+                        <p>...Loading..</p> : 
+                        isSuccess && post ?
+                        <DescriptionStyled>
+                            {post.description}
+                        </DescriptionStyled> :
+                        <></> 
+                    }
+                </SectionWrapperStyled>
 
-        </PostDetailStyled>
+                <SectionWrapperStyled>
+                    <TitleStyled 
+                        color="#7d7c89"
+                        padding="10px 0"
+                        fontSize="18px">
+                            Date of Posting <CalendarOutlined />
+                    </TitleStyled>
+                    {loading ? 
+                        <p>...Loading..</p> : 
+                        isSuccess && post ?
+                        (
+                            post.dateOfPostings.map((date: any, index: number) => (
+                                <DateTimePicker day={date.day} time={date.time} key={index} />
+                            ))) :
+                            <></>
+                    }
+                </SectionWrapperStyled>
+
+                <SectionWrapperStyled>
+                    <TitleStyled 
+                        color="#7d7c89"
+                        padding="10px 0"
+                        fontSize="18px">Tags</TitleStyled>
+
+                    {loading ? 
+                        <p>...Loading..</p> : 
+                        isSuccess && post ?
+                            <ListTags tags={post.tags} /> :
+                            <></>
+                    }
+                    
+                </SectionWrapperStyled>
+
+            </PostDetailStyled>
+        </PostDetailWrapperStyled>
     );
 }, isEqual)
 
