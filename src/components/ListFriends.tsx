@@ -18,11 +18,11 @@ export interface ListFriendProps {
     users: IUser[],
 }
 
-export const ListFriends = React.memo(() => {
+export const ListFriends = () => {
     const currentUser = useAppSelector(state => state.userState.user)
-  
+
     const { data: users, isLoading } = useGetListFiendsQuery(currentUser.id);
-    
+
     return (
         <ListFriendsStyled>
         {
@@ -47,6 +47,6 @@ export const ListFriends = React.memo(() => {
                 </>)
         }
         </ListFriendsStyled>
-    )})
+    )}
 
 export default ListFriends;

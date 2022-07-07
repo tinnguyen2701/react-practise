@@ -19,7 +19,7 @@ export interface ListThumbnailsProps {
     borderRadius?: string
 }
 
-const ListThumbnails = React.memo(({images, width, height, borderRadius}: ListThumbnailsProps) => {
+const ListThumbnails = ({images, width, height, borderRadius}: ListThumbnailsProps) => {
     return (
        <ListThumbnailsStyled>
         {images && images.map((imageSrc, index) => 
@@ -31,6 +31,6 @@ const ListThumbnails = React.memo(({images, width, height, borderRadius}: ListTh
                 borderRadius={borderRadius} /> 
         )}
        </ListThumbnailsStyled> 
-    )})
+    )}
 
 export default ListThumbnails;

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { isEqual } from 'lodash'
 import React from "react";
 import { TitleStyled } from "./TitleStyled";
 import { postApi } from "../redux/apis";
@@ -61,7 +60,7 @@ export interface PostDetailProps {
 }
 
 
-  export const PostDetail = React.memo(({postId, ...props}: PostDetailProps) => {
+  export const PostDetail = ({postId, ...props}: PostDetailProps) => {
     const { isLoading, isFetching, isSuccess } = postApi.endpoints.getPostById.useQuery(postId, {
         skip: false,
         refetchOnMountOrArgChange: true,
@@ -149,7 +148,7 @@ export interface PostDetailProps {
             </PostDetailStyled>
         </PostDetailWrapperStyled>
     );
-}, isEqual)
+}
 
   
 export default PostDetail;
