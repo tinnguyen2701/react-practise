@@ -1,6 +1,8 @@
 import { CalendarOutlined, DashboardOutlined, ExceptionOutlined, InfoCircleOutlined, MessageOutlined, SettingOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components"
+import ButtonWrapped from "./button/ButtonWrapped";
 
 interface Menu {
     name: string,
@@ -74,18 +76,20 @@ const NavLinkStyled = styled(NavLink)`
 `
 
 const Navigation = () => {
-  return (
-    <>
-        <NavigationStyled>
-            { 
-                menus.map((menu, index) => 
-                    <NavLinkStyled key={index} to={menu.path}>
-                        {menu.icon} {menu.name}
-                    </NavLinkStyled>
-            )}
-        </NavigationStyled> 
-    </>
-  );
+    const { t } = useTranslation();
+    
+    return (
+        <>
+            <NavigationStyled>
+                { 
+                    menus.map((menu, index) => 
+                        <NavLinkStyled key={index} to={menu.path}>
+                            {menu.icon} {t(menu.name)}
+                        </NavLinkStyled>
+                )}
+            </NavigationStyled> 
+        </>
+    );
 };
 
 export default Navigation;

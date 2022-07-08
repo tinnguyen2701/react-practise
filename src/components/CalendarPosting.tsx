@@ -3,9 +3,10 @@ import React from 'react';
 import styled from "styled-components"
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import interactionPlugin from "@fullcalendar/interaction" // needed for dayClick
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction" // needed for dayClick
 import ListThumbnails from "./ListThumbnails";
 import { postApi } from "../redux/apis";
+import { IPost } from "../types";
 
 const CalendarPostingStyled = styled.div`
   .fc-header-toolbar {
@@ -18,7 +19,7 @@ const FullCalendarStyled = styled(FullCalendar)`
 
 const FullCalendarWrapperStyled = styled.div`
   min-height: 600px;
-
+  padding-bottom: 15px;
   .fc-daygrid-day-frame.fc-scrollgrid-sync-inner {
     overflow: hidden;
   }
@@ -88,7 +89,7 @@ const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
     }
   });
 
-  const onDateClicked = (e: any) => {
+  const onDateClicked = (e: DateClickArg) => {
     if(events) {
       var postIdSelected = events.filter((_: any) => _.date === e.dateStr)[0]?.id || null;
 
@@ -103,7 +104,7 @@ const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
         September
       </TitleStyled>
 
-      <FullCalendarWrapperStyled className="calendar">
+      <FullCalendarWrapperStyled>
       {
         isLoading ?
         <p>..Loading..</p> :
@@ -113,7 +114,7 @@ const CalendarPosting = ({onDateClick}: CalendarPostingProp) => {
           firstDay={1}
           initialView="dayGridMonth"
           aspectRatio={2}
-          dateClick={(e) => onDateClicked(e)}
+          dateClick={(e: DateClickArg) => onDateClicked(e)}
           events={events}
           eventContent={renderEventContent} />
       }
